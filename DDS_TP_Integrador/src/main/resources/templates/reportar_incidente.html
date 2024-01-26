@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link rel="apple-touch-icon" sizes="76x76" th:href="@{/img/apple-icon.png}" />
+	<link rel="icon" type="image/png" th:href="@{/img/favicon.png}" />
+	<title>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+
+	<link th:href="@{/css/paper-bootstrap-wizard.css}" rel="stylesheet" />
+
+	<!-- Fonts and Icons -->
+	<link th:href="@{https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css}" rel="stylesheet">
+	<link th:href="@{https://fonts.googleapis.com/css?family=Muli:400,300}" rel='stylesheet' type='text/css'>
+	<link th:href="@{/css/themify-icons.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="image-container set-full-height" style="background-image: url('../img/paper-1.jpeg')">
+	<!--   Big container   -->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+
+				<!--      Wizard container        -->
+				<div class="wizard-container">
+					<div class="card wizard-card" data-color="orange" id="wizard">
+						<form th:action="@{/crear_incidente}" method="post" th:object="${reportarIncidenteRequest}" id="reportar-incidente-form">
+
+							<!--        You can switch " data-color="azure" "  with one of the next bright colors: "blue", "green", "orange", "red"           -->
+
+							<div class="wizard-header">
+								<h3 class="wizard-title">Reportá un incidente</h3>
+								<p class="category">Compartí lo que está pasando.</p>
+							</div>
+
+							<div class="wizard-navigation">
+								<div class="progress-with-circle">
+									<div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1"
+										 aria-valuemax="3" style="width: 21%;"></div>
+								</div>
+								<ul>
+									<li>
+										<a href="#details" data-toggle="tab">
+											<div class="icon-circle">
+												<i class="ti-list"></i>
+											</div>
+											Detalles
+										</a>
+									</li>
+									<li>
+										<a href="#description" data-toggle="tab">
+											<div class="icon-circle">
+												<i class="ti-pencil"></i>
+											</div>
+											Observaciones
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="tab-content">
+								<div class="tab-pane" id="details">
+									<div class="row">
+										<h5 class="info-text"> Decinos cuál es el problema. </h5>
+										<input type="hidden" id="idPersonaInput" name="idPersona" th:value="${idPersona}">
+										<div class="col-sm-10 col-sm-offset-1">
+											<div class="form-group" >
+												<label>Establecimiento</label>
+												<select class="form-control" name="establecimiento">
+													<option disabled="" selected="">- Seleccione un establecimiento -</option>
+													<option th:each="establecimiento : ${establecimientos}" th:value="${establecimiento.nombreEstablecimiento}" th:text="${establecimiento.nombreEstablecimiento}"></option>
+												</select>
+											</div>
+										</div>
+										<div class="col-sm-10 col-sm-offset-1">
+											<div class="form-group">
+												<label>Prestación Incidentada</label>
+												<select class="form-control" name="prestacion">
+													<option disabled="" selected="">- Seleccione una prestación incidentada -</option>
+													<option th:each="prestacion : ${prestaciones}" th:value="${prestacion.nombrePrestacion}" th:text="${prestacion.nombrePrestacion}"></option>
+												</select>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="tab-pane" id="description">
+									<div class="row">
+										<h5 class="info-text"> Contanos más sobre el problema.</h5>
+										<div class="col-sm-10 col-sm-offset-1">
+											<div class="form-group">
+												<label>Descripción del Incidente</label>
+												<textarea class="form-control" name="descripcion" th:value="${descripcion}" placeholder="Ejemplo: El ascensor del supermercado MrAhorro está roto y no cuentan con rampa para discapacitados!!! Encima se jactan de inclusivos los chamuyeros. Pd.: Los descuentos son una garcha, no vayan. Atte. Susana de Lomas.&#128536;💋" rows="3"></textarea>
+											</div>
+										</div>
+
+									</div>
+									<div class="row">
+										<div class="col-sm-10 col-sm-offset-1">
+											<button style="width: 100%;" type='submit' class='btn btn-fill btn-warning btn-wd'  id="reportarIncidenteButton">Reportar incidente</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</form>
+						<div class="row">
+							<div class="col-sm-10 col-sm-offset-1">
+								<button style="width: 100%;     margin-bottom: 20px;" type='button' class='btn btn-fill btn-default btn-wd'  id="volverAInicio2">Volver a Inicio</button>
+							</div>
+						</div>
+					</div>
+				</div> <!-- wizard container -->
+			</div>
+		</div> <!-- row -->
+	</div> <!--  big container -->
+
+</div>
+
+</body>
+	<!-- Core JS Files -->
+	<script th:src="@{/js/jquery-2.2.4.min.js}" type="text/javascript"></script>
+	<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+	<script th:src="@{/js/jquery.bootstrap.wizard.js}" type="text/javascript"></script>
+
+	<!-- Plugin for the Wizard -->
+	<script th:src="@{/js/demo.js}" type="text/javascript"></script>
+	<script th:src="@{/js/paper-bootstrap-wizard.js}" type="text/javascript"></script>
+
+	<!-- More information about jquery.validate here: https://jqueryvalidation.org/ -->
+	<script th:src="@{/js/jquery.validate.min.js}" type="text/javascript"></script>
+
+	<!-- SCRIPTS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<!-- Toastify js -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<script th:src="@{/js/reportar.js}" type="module"></script>
+
+<script>
+
+	document.getElementById('volverAInicio2').addEventListener('click', function () {
+		window.location.href = '/inicio';
+	});
+
+	document.addEventListener('DOMContentLoaded', function () {
+		function submitForm(event) {
+			console.log("Limpiando notificaciones al enviar formulario de reportar incidente");
+			// Prevent the default form submission
+			event.preventDefault();
+
+			// Clear localStorage
+			localStorage.removeItem('notificaciones');
+			localStorage.removeItem('incidentesDeInteres');
+
+			// Submit the form
+			document.getElementById('reportar-incidente-form').submit();
+		}
+
+		// Find the button by its ID
+		var reportarIncidenteButton = document.getElementById('reportarIncidenteButton');
+
+		// Attach click event listener to the button
+		reportarIncidenteButton.addEventListener('click', submitForm);
+	});
+</script>
+</html>

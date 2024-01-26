@@ -1,0 +1,205 @@
+<!doctype html>
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link rel="apple-touch-icon" sizes="76x76" th:href="@{/img/apple-icon.png}" />
+	<link rel="icon" type="image/png" th:href="@{/img/favicon.png}" />
+	<title>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+
+	<link th:href="@{/css/paper-bootstrap-wizard.css}" rel="stylesheet" />
+
+	<!-- Fonts and Icons -->
+	<link th:href="@{https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css}" rel="stylesheet">
+	<link th:href="@{https://fonts.googleapis.com/css?family=Muli:400,300}" rel='stylesheet' type='text/css'>
+	<link th:href="@{/css/themify-icons.css}" rel="stylesheet">
+
+
+
+	</head>
+
+	<body>
+
+	<div class="image-container set-full-height" style="background-image: url('../img/paper-1.jpeg')">
+	    <!--   Big container   -->
+	    <div class="container">
+	        <div class="row">
+		        <div class="col-sm-8 col-sm-offset-2">
+		            <!--      Wizard container        -->
+		            <div class="wizard-container">
+		                <div class="card wizard-card" data-color="orange" id="wizardProfile">
+		                    <div>
+		                    	<div class="wizard-header text-center">
+		                        	<h3 class="wizard-title">¡Bienvenido al Sistema de Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos!</h3>
+									<p> </p>
+									<p class="category">Por favor, crea una cuenta o inicia sesión.</p>
+		                    	</div>
+
+								<div class="wizard-navigation">
+									<div class="progress-with-circle">
+									     <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3" style="width: 21%;"></div>
+									</div>
+									<ul>
+			                            <li>
+											<a href="#login" data-toggle="tab">
+												<div class="icon-circle">
+													<i class="ti-user"></i>
+												</div>
+												<p style="white-space: nowrap;">Iniciar sesión</p>
+											</a>
+										</li>
+			                            <li>
+											<a href="#register" data-toggle="tab">
+												<div class="icon-circle">
+													<i class="ti-settings"></i>
+												</div>
+												<div>
+													<p style="white-space: nowrap;">Crear cuenta</p>
+												</div>
+											</a>
+										</li>
+			                            
+			                        </ul>
+								</div>
+		                        <div class="tab-content">
+		                            <div class="tab-pane" id="login">
+		                            	<div class="row">
+											<div class="col-sm-10 d-flex col-sm-offset-1">
+
+												<form class="form-group" id="login-form">
+													<label style="margin-top:10px">Correo Electrónico</label>
+													<input name="mail" type="text" id="login-email" class="form-control" placeholder="Por ejemplo: pepe@gmail.com">
+
+													<label style="margin-top:10px">Contraseña</label>
+													<input name="contraseña" type="password" id="login-password" class="form-control" placeholder="Contraseña">
+
+													<div class="row" style="margin-top: 20px;">
+														<div class="col-sm-12 d-flex">
+															<button style="width: 100%;" type='submit' class='btn btn-fill btn-warning btn-wd'>Iniciar sesión</button>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-6 d-flex " style="margin-top: 20px;">
+															<button style="width: 100%;" id="googleLogin" type='submit' class='btn btn-fill btn-warning btn-wd'>Google</button>
+														</div>
+
+														<div class="col-sm-6 d-flex" style="margin-top: 20px;">
+															<button style="width: 100%;" type='submit' class='btn btn-fill btn-warning btn-wd' disabled>Outlook</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+		                            </div>
+
+
+									<div class="tab-pane" id="register">
+		                                <div class="row">
+											<div class="col-sm-10 d-flex col-sm-offset-1">
+								
+												<form class="form-group"  id="signup-form">
+													<label style="margin-top:10px">Correo Electrónico</label>
+													<input name="mail" type="text" id="signup-email" class="form-control" placeholder="Por ejemplo: pepe@gmail.com">
+
+													<label style="margin-top:10px">Contraseña</label>
+													<input name="contraseña" type="password" id="signup-password" class="form-control" placeholder="Contraseña">
+
+													<div class="row" style="margin-top: 20px;">
+														<div class="col-sm-12 d-flex ">
+															<button style="width: 100%;" type='submit' class='btn btn-fill btn-warning btn-wd'>Registrar</button>
+														</div>
+													</div>
+
+												</form>
+				
+											</div>
+									
+										</div>
+
+										<!-- <div class="row">
+											<div class="col-sm-5 d-flex col-sm-offset-1" style="margin-top: 20px;">
+												<input style="width: 100%;" type='button' class='btn btn-fill btn-warning btn-wd' name='' value='Google' />
+											</div>
+										
+											<div class="col-sm-5 d-flex" style="margin-top: 20px;">
+												<input style="width: 100%;" type='button' class='btn btn-fill btn-warning btn-wd' name='' value='Outlook' />
+											</div>
+										</div> -->
+		                     
+		                        	</div>
+								</div>
+		                    </div>
+		                </div>
+		            </div> <!-- wizard container -->
+		        </div>
+	    	</div><!-- end row -->
+		</div> <!--  big container -->
+	</div>
+
+</body>
+
+	<!-- Core JS Files -->
+	<script th:src="@{/js/jquery-2.2.4.min.js}" type="text/javascript"></script>
+	<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+	<script th:src="@{/js/jquery.bootstrap.wizard.js}" type="text/javascript"></script>
+
+	<!-- Plugin for the Wizard -->
+	<script th:src="@{/js/demo.js}" type="text/javascript"></script>
+	<script th:src="@{/js/paper-bootstrap-wizard.js}" type="text/javascript"></script>
+
+	<!-- More information about jquery.validate here: https://jqueryvalidation.org/ -->
+	<script th:src="@{/js/jquery.validate.min.js}" type="text/javascript"></script>
+
+	<!-- SCRIPTS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<!-- Toastify js -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<script th:src="@{js/login.js}" type="module"></script>
+
+
+<script>
+//borro toda la cache al pedir el login
+// Obtener todas las claves en LocalStorage
+
+
+	localStorage.removeItem('idPersona');
+	localStorage.removeItem('notificaciones');
+	localStorage.removeItem('incidentesDeInteres');
+	localStorage.removeItem('configuracionNotificaciones');
+	localStorage.removeItem('linkComunidadesPersona');
+	localStorage.removeItem('ultimoLinkParaVolverAtrasDeVistaInfoIncidente');
+
+
+// const clearAndLogin = async () => {
+// 	console.log('Iniciando limpieza de LocalStorage...');
+// 	await clearLocalStorage();
+// 	console.log('Todos los elementos de LocalStorage han sido eliminados.');
+//
+// };
+//
+// async function clearLocalStorage(){
+// 	return new Promise(resolve => {
+// 			for (let i = 0; i < localStorage.length; i++) {
+// 			const key = localStorage.key(i);
+// 			console.log('Clave en LocalStorage:', key);
+//
+// 			// Borrar el elemento asociado a la clave
+// 			localStorage.removeItem(key);
+// 			console.log('Elemento eliminado en LocalStorage:', key);}
+// 	})
+//
+// }
+
+
+
+</script>
+</html>
